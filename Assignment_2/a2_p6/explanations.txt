@@ -1,0 +1,21 @@
+CH08-320142
+a2 p6.cpp
+Fjolla Dedaj
+f.dedaj@acobs-university.de
+
+a)
+After commenting out “using namespace std;” a lot of errors pop up, such as:
+	-Unknown type name string
+	-Use of undeclared identifier ‘cout’
+	-Use of undeclared identifier ‘endl’
+	-Use of undeclared identifier ‘cin’
+Since namespace is a form of scope that holds its own definitions for variables, functions, etc. both ‘cout’ and ‘cin’, along with ‘endl’, are defined inside of std for use. Thus, when removing it, we get a bunch of errors. In order to fix these errors, we have to type std:: in front of every cin, cout, string and endl, such that the scope which defines these objects, functions and classes is included.
+
+b)
+If we remove ‘Critter::’ from 
+void Critter::setName(std::string& newname) {
+	name = newname;
+}
+we get the error:
+	-Use of undeclared identifier ‘name’.
+When defining a method we should specify the name of the class it belongs to. There can be more methods called setName in different classes, so it is necessary to specify in which one it is being defined. ‘name’ is considered as an undeclared identifier since the Critter class in which it is declared is not specified when defining the method. A possible alternative solution to this is to move the definition of the method within the Critter class.
